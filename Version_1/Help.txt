@@ -1,0 +1,43 @@
+Rx  -->  Univerzalni 16b registr
+Ry  -->  Interní 16b registr, Nedoporucen pro ukladání hodnot, urcen pro neinteruptorovane pouziti.
+Pc ma 2 pameti, "x" a "y", adresuji se obe najednou,
+"x" je sdilena s kodem, "y" je ciste hodnotova
+
+boot  -->  Boot
+wait  -->  Ceka
+LDAx  -->  Ulozi "x" do A
+Addx  -->  Pricte "x" k A a ulozi do Rx
+Subx  -->  Odecte "x" od A a ulozi do Rx
+OutR  -->  vypis Rx
+Halt  -->  vypnout (Spise seknout)
+MvRx  -->  presune Rx do "x"
+MvxR  -->  presune "x" do Rx
+Jmpx  -->  Skoci na adresu ulozenou v "x"
+LDAy  -->  Ulozi "y" do Ra
+MvRy  -->  presune Rx do "y"
+MvyR  -->  presune "y" do Rx
+Jmpy  -->  Skoci na adresu ulozene v "y"
+Addy  -->  Pricte "y" k A a ulozi do Rx
+Suby  -->  Odecte "y" od A a ulozi do Rx
+CmBr  -->  ulozi "y" do B registru v comparatoru (Bc)
+CmpC  -->  Porovna A s Bc, skoci na Jr pokud A < Bc
+Cmjr  -->  ulozi "y" do Jump registru(Jr) komparatoru
+Outy  -->  vypise "y"
+Mety  -->  zobrazi "y" na displeji
+----
+Obsolete instructions, replaced by GPIx
+Stop  -->  "13"     #Zastavi PC a ceka na vstup
+LdtR  -->  "14"     #Nacte uzivateluv vstup do Rx
+----
+Prny  -->  Zobrazi "y" (Ascii) na displeji
+Clrd  -->  Smaze displej
+WDon  -->  Zapne Watch dog timer
+WDSy  -->  Vlozi hodnotu z "y" do WD porovnavaciho registru
+WDRs  -->  Nastavi WD timer na 0
+GPOy  -->  Odesle "y" do GPO (4bit output registr)
+CHsy  -->  ODesle "y" do Chip select registru. (3bit)
+Bssy  -->  Save (Input) Bus to "y",
+Bsoy  -->  Save "y" to output Bus
+GPIx  -->  Da GPRI do pameti
+MvR2y  -->  presune Ry do "y"
+MvyR2  -->  presune "y" do Ry

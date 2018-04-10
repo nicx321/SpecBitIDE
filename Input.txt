@@ -1,0 +1,41 @@
+Zero = GetROM(0)		#Create ROM Variables
+One = GetROM(1)
+Max = GetROM(0x10)
+Max2 = GetROM(0x20)
+Offs = GetROM(0x200)
+
+G = GetRAM()		#Create RAM Variables
+W = GetRAM()
+Z = GetRAM()
+Y = GetRAM()
+X = GetRAM(0)
+
+GotoP = GetJumpPos()            #Start point
+MV(One, 0x200+16)		#Enable Display
+MV(Zero, X)		#PreZero X
+
+DO()			#While Start
+Add(X, Offs , Y)		#Calculate Display collumn
+DecD(X, Z)		#Decode X into Z
+Derf(Z, Y)			#Move Z into adress saved in Y
+OneP(X)			#Increments X by one
+WhilE(X, Max, "<u")		#While loop
+
+Sub(X, One, X)		#Decrement X by one
+
+MV(Zero, G)		#Zero out G
+DO()			#While Start
+Add(G, Offs , Y)		#Calculate Display collumn
+DecD(X, Z)		#Decode X into Z
+Derf(Z, Y)			#Move Z into adress saved in Y
+Sub(X, One, X)		#Decrement X by one
+OneP(G)			#Increment G by one
+WhilE(X, Zero, ">u")	#While loop
+
+Add(G, Offs , Y)		#Calculate Display collumn
+DecD(X, Z)		#Decode X into Z
+Derf(Z, Y)			#Move Z into adress saved in Y
+Sub(X, One, X)		#Decrement X by one
+OneP(G)			#Increment G by one
+
+Goto(GotoP)		#Goto Start

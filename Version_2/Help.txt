@@ -1,0 +1,70 @@
+HW:
+	EXS-> 	      0: Standart I/O
+		      1: External peripherals
+		External p.:
+			IR1 -> BUSI
+			OR1 -> BUSO
+			OR2 -> ADDR+R+W(bits 0-10 Addr, 11 WriteSignal, 12 ReadSignal, 13-14-15 uneffected)
+			IR3 -> MDO (bits 0-7, other uneffected) External FW adressing
+
+	WD:	Turn on WatchDog
+	IMO: 	Disables internal RAM and ROM, useful for diferent rom and ram sizes
+	
+
+Commands
+	* Optional
+	*WD = 0			//Compiler setting, WD Disable, Standart enable
+	*RomSize = 256		//ROM size, on this value starts RAM
+	Halt()
+	GetROM(Preset*) 	//Create Variable in ROM
+	GetRAM(Preset*)		//Create Variable in RAM
+	GetJumpPos()
+	Neg(A, ADDR)		//Invert A and save to ADDR
+	Add(A, B, ADDR) 	// ADDR = A+B
+	Sub(A, B, ADDR)		// ADDR = A-B
+	Mul(A, B, ADDR)		// ADDR = A*B
+	Div(A, B, ADDR)		// ADDR = A/B
+	And(A, B, ADDR)		// ADDR = A(AND)B
+	Or(A, B, ADDR)		// ADDR = A(OR)B
+	Not(A, ADDR)		// ADDR = ~A
+	Xor(A, B, ADDR)		// ADDR = A(XOR)B
+	Goto(ADDR)		//Jumps to location saved in ADDR
+ 	MV(A, B)		//Move A to B
+	If(A, B, Gotop, Conf)   //Compare A and B by Conf defined below, if true, Jumps to Gotop, Conf can also be String with Inp defined below
+	MkIC(Inp):		//Create Varible with Configuration for If
+		Inp:
+		">2"		//2 = 2's complement
+		"=2"
+		"<2"
+		">u"		//u = unsigned
+		"=u"
+		"<u"
+	DO()			//Do While loop, returns While identificator
+	WhilE(A, B, Conf, ID)   //End Do While, Expect variables A, B, IFConfigurator and While identificator, Conf can also be String with Inp defined above
+	OneP(X)			//Inc X by one
+	DecD(X, Y)		//Decode X to Y
+		
+Memory map:
+	000 - 0FF	-ROM		//ROM Location		
+	100 - 1FF	-RAM		//RAM Location
+	7FF		DISP		//Output Displ.
+	7FE		Input1		//In Reg1, Updated on new instruction
+	7FD		Input2		//In Reg2, Updated on new instruction
+	7FC		Input3		//In Reg3, Updated on new instruction
+	7FB		AluA		//Alu Reg A
+	7FA		AluB		//Alu Reg B
+	7F9		Ro1		//Output Reg 1
+	7F8		Ro2		//Output Reg 2
+	7F7		Ro3		//Output Reg 3
+	7F6		Ro4		//Output Reg 4
+	7F5		IfCR		//If configuration register
+	7F4		IfRR		//If Reg Result, Updated on new instr.
+	7F3 7F2 7F1	Clocks1-3	//64b (3*16b) Register containing tics from Start
+	7F0		OneR		//Areg+1 result
+	7EF		GSR		//General setting register (0 on startup)
+		b0:	WD Disable
+		b1-15	Unused
+	7EE		DrfReg		//Internal usage
+	7ED		Decd 		//Decoded (4b) Areg
+
+

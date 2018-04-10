@@ -1,0 +1,85 @@
+#PRECOMPILER
+a = allocmemY()
+b = allocmemY()
+c = allocmemY()
+d = allocmemY()
+e = allocmemY()
+f = allocmemY()
+g = allocmemY()
+h = allocmemY()
+ch = allocmemY()
+n = allocmemY()
+kamp = allocmemY()
+kamz = allocmemY()
+Text_r = allocmemY()
+Text_e = allocmemY()
+Text_n = allocmemY()
+Text_d = allocmemY()
+Text_u = allocmemY()
+Text_j = allocmemY()
+
+setY (Text_r, '0072')
+setY (Text_e, '0065')
+setY (Text_n, '006e')
+setY (Text_d, '0064')
+setY (Text_u, '0075')
+setY (Text_j, '006a')
+setY (kamz, '0028')
+setY (kamp, '0003')
+setY (ch,'0008')
+setY (h, '0004')
+setY (g, '0002')
+setY (e, '0002')
+setY (f, '0001')
+setY (a, '8142')
+setY (c, '1824')
+setY (b, '2418')
+setY (d, '4281')
+
+
+#CODE
+R[1] = CHsy + e
+R[2] = Jmpy + kamz
+R[3] = Bsoy + a
+R[4] = GPOy + f
+R[5] = Bsoy + b
+R[6] = GPOy + g
+R[7] = Bsoy + c
+R[8] = GPOy + h
+R[9] = Bsoy + d
+R[10] = GPOy + ch
+R[11] = wait
+R[12] = wait
+R[13] = wait
+R[14] = wait
+R[15] = wait
+R[16] = wait
+R[17] = wait
+R[18] = wait
+R[19] = Bsoy + n
+R[20] = GPOy + f
+R[21] = Bsoy + n
+R[22] = GPOy + g
+R[23] = Bsoy + n
+R[24] = GPOy + h
+R[25] = Bsoy + n
+R[26] = GPOy + ch
+R[27] = wait
+R[28] = wait
+R[29] = wait
+R[30] = wait
+R[31] = wait
+R[32] = wait
+R[33] = wait
+R[34] = wait
+R[35] = Jmpy + kamp
+R[36] = nic
+R[37] = nic
+R[38] = nic
+R[39] = nic
+R[40] = Prny + Text_r
+R[41] = Prny + Text_e
+R[42] = Prny + Text_n
+R[43] = Prny + Text_d
+R[44] = Prny + Text_r
+R[45] = Jmpy + kamp

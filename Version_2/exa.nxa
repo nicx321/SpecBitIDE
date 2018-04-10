@@ -1,0 +1,13 @@
+#Counts from 0 to 32 (0x1F)
+
+Zero = GetROM(0)		#Create and preset ROM constant		
+Max = GetROM(0x1F)
+X = GetRAM(0)		#Create RAM variable
+
+GotoP = GetJumpPos()	#Create goto point
+MV(Zero, X)		#Move Zero into X
+DO()			#Do While loop start
+OneP(X)			#Increment X by one
+MV(X, DISP)		#Move X into Disp, Disp is specific output, not graphical display
+WhilE(X, Max, "<u")		#Do While loop test
+Goto(GotoP)		#Go back to start
